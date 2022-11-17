@@ -1,0 +1,15 @@
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key=<%=ENV['GOOGLE_API_KEY']%>&libraries=places"></script>
+
+<script>
+  google.maps.event.addDomListener(window, 'load', initialize);
+  function initialize() {
+    var input = document.getElementById('address');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+  }
+</script>
+
+<div>
+  <h3>Choisir un lieu pour lister les restaurants à proximité</h3>
+  <input id="address"/>
+</div>
+ 
