@@ -3,4 +3,7 @@ Rails.application.routes.draw do
 
 
   root :to => 'restaurant#index'
+
+  resources :restaurant, only: [:index]
+
 end

@@ -57,3 +57,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # A Ruby gem to load environment variables from `.env`.
 gem 'dotenv-rails'
+
+# For debugging
+gem 'pry-rails', '~> 0.3.9'

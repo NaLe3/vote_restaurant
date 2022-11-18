@@ -5,11 +5,36 @@
   function initialize() {
     var input = document.getElementById('address');
     var autocomplete = new google.maps.places.Autocomplete(input);
+    autocomplete.addListener('place_changed', function () {
+      var place = autocomplete.getPlace();
+      document.getElementById("latitude").value = place.geometry['location'].lat();
+      document.getElementById("longitude").value = place.geometry['location'].lng();
+    });
   }
 </script>
-
+  
 <div>
+
   <h3>Choisir un lieu pour lister les restaurants à proximité</h3>
   <input id="address"/>
+  <div onload="initialize()">
+    <%= form_with url: 'restaurant', method: :get do |f| %>
+      <%= f.hidden_field:latitude, id: :latitude %>
+      <%= f.hidden_field:longitude, id: :longitude %>
+      <%= button_tag "Lister les restaurants"%> 
+    <% end %>
+  </div>
+
+  <% if @restaurants_list.present? %>
+    <ul>
+      <% @restaurants_list.each do |restaurant| %> 
+      <li>
+        <%= restaurant["name"]%>
+        <%= restaurant["vicinity"]%>
+        <%= "note: #{restaurant["rating"]}"%>
+      </li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>
  
