@@ -17,7 +17,7 @@
 
   <h3>Choisir un lieu pour lister les restaurants à proximité</h3>
   <input id="address"/>
-  <div onload="initialize()">
+  <div>
     <%= form_with url: 'restaurant', method: :get do |f| %>
       <%= f.hidden_field:latitude, id: :latitude %>
       <%= f.hidden_field:longitude, id: :longitude %>
