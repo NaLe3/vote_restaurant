@@ -6,5 +6,6 @@ Rails.application.routes.draw do
 
   resources :restaurant, only: [:index]
   post 'restaurant/create'
+  post 'voter/create'
 
 end

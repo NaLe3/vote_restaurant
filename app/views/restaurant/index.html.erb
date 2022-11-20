@@ -47,7 +47,9 @@
               <%= restaurant.name%>
               <%= restaurant.address%>
               <%= "note: #{restaurant.rating}"%>
+              <%= button_to "vote +", voter_create_path(restaurant), params: { restaurant_id: restaurant.id }%>
             </li>
+            <%= "Nombre de vote: #{restaurant.voters.count}"%>
           <% end %>
         </ul>
     <% end %>

@@ -12,6 +12,7 @@ class RestaurantController < ApplicationController
       rating: params[:rating],
       google_place_id: params[:place_id]
     )
+    redirect_to restaurant_index_path
   end 
 
   private 
