@@ -2,7 +2,17 @@ class RestaurantController < ApplicationController
 
   def index
     @restaurants_list = call_nearbysearch_google_api(params[:latitude], params[:longitude])
+    @restaurants = Restaurant.all
   end
+
+  def create
+    @restaurant = Restaurant.create(
+      name:  params[:name],
+      address: params[:vicinity],
+      rating: params[:rating],
+      google_place_id: params[:place_id]
+    )
+  end 
 
   private 
 

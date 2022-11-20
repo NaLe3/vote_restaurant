@@ -14,27 +14,43 @@
 </script>
   
 <div>
-
-  <h3>Choisir un lieu pour lister les restaurants à proximité</h3>
-  <input id="address"/>
   <div>
+    <h3>Choisir un lieu pour lister les restaurants à proximité</h3>
+    <input id="address"/>
     <%= form_with url: 'restaurant', method: :get do |f| %>
       <%= f.hidden_field:latitude, id: :latitude %>
       <%= f.hidden_field:longitude, id: :longitude %>
       <%= button_tag "Lister les restaurants"%> 
     <% end %>
   </div>
-
   <% if @restaurants_list.present? %>
-    <ul>
-      <% @restaurants_list.each do |restaurant| %> 
-      <li>
-        <%= restaurant["name"]%>
-        <%= restaurant["vicinity"]%>
-        <%= "note: #{restaurant["rating"]}"%>
-      </li>
-      <% end %>
-    </ul>
+    <div>
+      <h3>Choisir le ou les restaurants de votre choix</h3>
+      <ul>
+        <% @restaurants_list.each do |restaurant| %> 
+          <li>
+            <%= restaurant["name"]%>
+            <%= restaurant["vicinity"]%>
+            <%= "note: #{restaurant["rating"]}"%>
+            <%= button_to "+", restaurant_create_path(restaurant)%> 
+          </li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
+  <% if @restaurants.present? %>
+    <div>
+      <h3>Voter le ou les restaurants de votre choix</h3>
+        <ul>
+          <% @restaurants.each do |restaurant| %> 
+            <li>
+              <%= restaurant.name%>
+              <%= restaurant.address%>
+              <%= "note: #{restaurant.rating}"%>
+            </li>
+          <% end %>
+        </ul>
+    <% end %>
+  </div>
 </div>
  

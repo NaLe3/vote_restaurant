@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   root :to => 'restaurant#index'
 
   resources :restaurant, only: [:index]
+  post 'restaurant/create'
 
 end
