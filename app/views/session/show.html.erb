@@ -17,7 +17,7 @@
   <div>
     <h3>Choisir un lieu pour lister les restaurants à proximité</h3>
     <input id="address"/>
-    <%= form_with url: 'restaurant', method: :get do |f| %>
+    <%= form_with url: "#{@session.id}", method: :get do |f| %>
       <%= f.hidden_field:latitude, id: :latitude %>
       <%= f.hidden_field:longitude, id: :longitude %>
       <%= button_tag "Lister les restaurants"%> 
@@ -32,7 +32,7 @@
             <%= restaurant["name"]%>
             <%= restaurant["vicinity"]%>
             <%= "note: #{restaurant["rating"]}"%>
-            <%= button_to "+", restaurant_create_path(restaurant)%>
+            <%= button_to "+", restaurant_create_path(restaurant), params: { session_id: @session.id }%>
           </li>
         <% end %>
       </ul>
@@ -49,7 +49,7 @@
                 <%= restaurant.name%>
                 <%= restaurant.address%>
                 <%= "note: #{restaurant.rating}"%>
-                <div data-action="click->vote#increment"><%= button_to "vote +", voter_create_path(restaurant), params: { restaurant_id: restaurant.id }%></div>
+                <div data-action="click->vote#increment"><%= button_to "vote +", voter_create_path, params: { restaurant_id: restaurant.id }%></div>
               </li>
               <u>Nombre de vote:</u>
               <div data-vote-target="results"></div>     
