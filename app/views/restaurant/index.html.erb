@@ -32,7 +32,7 @@
             <%= restaurant["name"]%>
             <%= restaurant["vicinity"]%>
             <%= "note: #{restaurant["rating"]}"%>
-            <%= button_to "+", restaurant_create_path(restaurant)%> 
+            <%= button_to "+", restaurant_create_path(restaurant)%>
           </li>
         <% end %>
       </ul>
@@ -43,13 +43,17 @@
       <h3>Voter le ou les restaurants de votre choix</h3>
         <ul>
           <% @restaurants.each do |restaurant| %> 
-            <li>
-              <%= restaurant.name%>
-              <%= restaurant.address%>
-              <%= "note: #{restaurant.rating}"%>
-              <%= button_to "vote +", voter_create_path(restaurant), params: { restaurant_id: restaurant.id }%>
-            </li>
-            <%= "Nombre de vote: #{restaurant.voters.count}"%>
+            <% vote_count = restaurant.voters.count %>
+            <div data-controller="vote" data-vote-count-value=<%= vote_count %>>
+              <li>
+                <%= restaurant.name%>
+                <%= restaurant.address%>
+                <%= "note: #{restaurant.rating}"%>
+                <div data-action="click->vote#add"><%= button_to "vote +", voter_create_path(restaurant), params: { restaurant_id: restaurant.id }%></div>
+              </li>
+              <u>Nombre de vote:</u>
+              <div data-vote-target="results"></div>     
+            </div>
           <% end %>
         </ul>
     <% end %>
