@@ -1,6 +1,6 @@
 # README
 
-An application that allows colleagues/friends to select a list of restaurants and vote among themselves to determine where they will have lunch. 
+An application that allows colleagues/friends to select a list of restaurants and vote to determine where they will have lunch. 
 
 ## Usage (V0)
 
