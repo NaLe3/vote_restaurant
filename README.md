@@ -1,24 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An application that allows colleagues/friends to select a list of restaurants and vote to determine where they will have lunch. 
 
-Things you may want to cover:
+## Usage (V0)
 
-* Ruby version
+It starts here: Restaurant Choice App (https://restaurantchoice.herokuapp.com/)
 
-* System dependencies
+Anyone can create a session of restaurant vote. 
+Once it started (after clicking on "Démarrer une session de vote de restaurant"), the new URL has to be shared with friends/colleagues. Then everyone that is aware of the url, can select restaurants and vote for restaurants. 
 
-* Configuration
+## Stack
 
-* Database creation
+* Backend: Ruby(3.0.2), Rails(6.1.7), PostgreSQL
+* APIs: Google Geocode, Google NearBySearch  
+* Front: Stimilus.js
+* Heroku
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
